@@ -2,7 +2,6 @@ import { c } from "../constants";
 import { makeRequest } from "./http";
 
 export async function sendOTP(phoneNumber: string): Promise<void | Error> {
-  console.log(`Sending OTP to ${phoneNumber}`);
   try {
     const result = await makeRequest({
       url: `https://control.msg91.com/api/v5/otp?mobile=91${phoneNumber}`,
@@ -25,7 +24,6 @@ export async function verifyOTP(
   phoneNumber: string,
   otp: string
 ): Promise<boolean | Error> {
-  console.log(`Verifying OTP ${otp} for ${phoneNumber}`);
   const result = await makeRequest({
     url: `https://control.msg91.com/api/v5/otp/verify?otp=${otp}&mobile=91${phoneNumber}`,
     method: "GET",

@@ -3,7 +3,7 @@ import { c } from '../constants';
 import { Types } from 'mongoose';
 
 interface IPayload {
-  phoneNumber: string;
+  phoneNumber?: string;
   name?: string;
   email?: string;
   _id?: Types.ObjectId;
