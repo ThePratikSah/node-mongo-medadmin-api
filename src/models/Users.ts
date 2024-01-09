@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 // 1. Create an interface representing a document in MongoDB.
 export interface IUser {
   phoneNumber: string;
-  name: string;
+  name?: string;
   email?: string;
 }
 
