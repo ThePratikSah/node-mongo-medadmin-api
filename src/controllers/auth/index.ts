@@ -2,22 +2,13 @@ import { Request, Response } from "express";
 import { generateToken } from "../../helpers/token";
 import { IUser, createUser, getUserByEmail } from "../../models/Users";
 import { comparePassword, hashPassword } from "../../helpers/bcrypt";
-
-interface RequestBody {
-  email: string;
-  password: string;
-}
+import { RequestBody } from "../../middleware/auth.middleware";
 
 export async function loginController(
   req: Request<{}, {}, RequestBody>,
   res: Response
 ) {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).json({ msg: "Email and password are required" });
-  }
-
   let user: IUser | null;
 
   try {
@@ -38,7 +29,7 @@ export async function loginController(
     email: user.email,
   });
 
-  return res.status(200).json({ token, user });
+  return res.status(200).json({ token });
 }
 
 export async function signupController(
@@ -46,10 +37,6 @@ export async function signupController(
   res: Response
 ) {
   const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(400).json({ msg: "Email and password are required" });
-  }
-
   let user: IUser | null;
 
   try {
