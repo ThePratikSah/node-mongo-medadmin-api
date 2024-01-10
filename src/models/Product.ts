@@ -59,4 +59,5 @@ const productSchema = new Schema<IProduct>({
   ],
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Product = model<IProduct>("Product", productSchema);

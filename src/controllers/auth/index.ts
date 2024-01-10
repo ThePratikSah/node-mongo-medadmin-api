@@ -5,7 +5,7 @@ import { comparePassword, hashPassword } from "../../helpers/bcrypt";
 import { RequestBody } from "../../middleware/auth.middleware";
 
 export async function loginController(
-  req: Request<{}, {}, RequestBody>,
+  req: Request<object, object, RequestBody>,
   res: Response
 ) {
   const { email, password } = req.body;
@@ -33,7 +33,7 @@ export async function loginController(
 }
 
 export async function signupController(
-  req: Request<{}, {}, RequestBody>,
+  req: Request<object, object, RequestBody>,
   res: Response
 ) {
   const { email, password } = req.body;

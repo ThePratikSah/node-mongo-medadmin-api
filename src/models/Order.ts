@@ -69,4 +69,5 @@ const orderSchema = new Schema<IOrder>({
   },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Order = model<IOrder>("Order", orderSchema);

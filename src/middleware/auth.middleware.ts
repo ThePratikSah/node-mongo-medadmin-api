@@ -14,7 +14,7 @@ const AuthPayloadBodySchema = object({
 export type RequestBody = Input<typeof AuthPayloadBodySchema>;
 
 export async function checkAuthData(
-  req: Request<{}, {}, RequestBody>,
+  req: Request<object, object, RequestBody>,
   res: Response,
   next: NextFunction
 ) {
