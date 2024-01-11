@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { IUser, createUser, getUserByEmail } from "../../models/Users";
 import { hashPassword } from "../../helpers/bcrypt";
-import { RequestBody } from "../../middleware/auth.middleware";
+import { AuthRequestBody } from "../../validators/auth.validation";
 
 export async function signupController(
-  req: Request<object, object, RequestBody>,
+  req: Request<object, object, AuthRequestBody>,
   res: Response
 ) {
   const { email, password } = req.body;

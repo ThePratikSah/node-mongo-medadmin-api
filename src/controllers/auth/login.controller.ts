@@ -2,10 +2,10 @@ import { Request, Response } from "express";
 import { generateToken } from "../../helpers/token";
 import { IUser, getUserByEmail } from "../../models/Users";
 import { comparePassword } from "../../helpers/bcrypt";
-import { RequestBody } from "../../middleware/auth.middleware";
+import { AuthRequestBody } from "../../validators/auth.validation";
 
 export async function loginController(
-  req: Request<object, object, RequestBody>,
+  req: Request<object, object, AuthRequestBody>,
   res: Response
 ) {
   const { email, password } = req.body;
