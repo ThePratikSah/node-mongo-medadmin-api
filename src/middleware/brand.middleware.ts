@@ -7,11 +7,11 @@ const brandBodyPayload = object({
   ]),
   logo: string("Brand logo url must be a string.", [
     minLength(5, "Please enter your brand logo."),
-    url("The url address is badly formatted."),
+    url("The logo url is badly formatted."),
   ]),
   website: string("Brand website url must be a string.", [
     minLength(5, "Please enter your brand website."),
-    url("The url address is badly formatted."),
+    url("The website address is badly formatted."),
   ]),
   description: string("Brand description must be a string.", [
     minLength(10, "Please enter your brand description."),

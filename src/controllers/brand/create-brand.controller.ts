@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
-import { BrandPayload } from "../../middleware/brand.middleware";
+import { createBrand } from "../../models/Brand";
 
 export async function createBrandController(req: Request, res: Response) {
-  const { name, logo, website, description } = req.body as BrandPayload;
+  try {
+    await createBrand(req.body);
+    return res.status(200).json({ msg: "Brand created successfully" });
+  } catch (error) {
+    return res.status(400).json({ msg: "Failed creating brand in database" });
+  }
 }
