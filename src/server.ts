@@ -5,7 +5,7 @@ import helmet from "helmet";
 
 import { c } from "./constants";
 
-import { router as authRouter } from "./routes/user.route";
+import { router as authRouter } from "./routes/auth.route";
 import { router as brandRouter } from "./routes/brand.route";
 
 const app = express();
