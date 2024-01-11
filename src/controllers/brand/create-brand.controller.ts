@@ -6,6 +6,8 @@ export async function createBrandController(req: Request, res: Response) {
     await createBrand(req.body);
     return res.status(200).json({ msg: "Brand created successfully" });
   } catch (error) {
-    return res.status(400).json({ msg: "Failed creating brand in database" });
+    return res
+      .status(400)
+      .json({ msg: "Failed creating brand in database", error });
   }
 }
