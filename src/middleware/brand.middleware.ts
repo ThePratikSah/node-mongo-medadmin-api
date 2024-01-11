@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { Input, minLength, object, safeParse, string, url } from "valibot";
+import { getBrandById } from "../models/Brand";
 
 const brandBodyPayload = object({
   name: string("Brand name must be a string.", [
@@ -18,6 +19,12 @@ const brandBodyPayload = object({
   ]),
 });
 
+const brandParamsPayload = object({
+  brandId: string("Brand id must be a string.", [
+    minLength(5, "Please enter your brand id."),
+  ]),
+});
+
 export type BrandPayload = Input<typeof brandBodyPayload>;
 
 export async function checkBrandPayloadData(
@@ -29,6 +36,26 @@ export async function checkBrandPayloadData(
 
   if (!result.success) {
     return res.status(400).json({ msg: "Invalid data", errors: result.issues });
+  }
+  return next();
+}
+
+export async function checkBrandParams(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const result = safeParse(brandParamsPayload, req.params);
+
+  if (!result.success) {
+    return res.status(400).json({ msg: "Invalid data", errors: result.issues });
+  }
+
+  const { brandId } = req.params;
+  const brand = await getBrandById(brandId);
+
+  if (!brand) {
+    return res.status(404).json({ msg: "Brand not found" });
   }
   return next();
 }
