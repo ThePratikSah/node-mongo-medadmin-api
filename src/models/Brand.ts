@@ -37,4 +37,6 @@ export const getAllBrands = () => Brand.find();
 export const getBrandById = (id: string) => Brand.findById(id);
 export const getBrandByName = (name: string) => Brand.findOne({ name });
 export const createBrand = (brand: IBrand) => new Brand(brand).save();
+export const updateBrand = (id: string, brand: IBrand) =>
+  Brand.findByIdAndUpdate(id, brand);
 export const deleteBrand = (id: string) => Brand.findByIdAndDelete(id);
