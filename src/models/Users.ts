@@ -5,7 +5,7 @@ import { Schema, model } from "mongoose";
 export interface IUser extends Document {
   email: string;
   password: string;
-  isAdmin: boolean;
+  isAdmin?: boolean;
   phoneNumber?: string;
   name?: string;
 }
@@ -42,4 +42,4 @@ export const getUserByPhoneNumber = (phoneNumber: string) =>
   User.findOne({ phoneNumber });
 export const getUserByEmail = (email: string) => User.findOne({ email });
 export const createUser = (user: IUser): Promise<object> =>
-  new User(user).save().then((user) => user.toObject());
+  new User(user).save();

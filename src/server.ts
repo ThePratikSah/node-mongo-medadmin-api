@@ -6,6 +6,7 @@ import helmet from "helmet";
 import { c } from "./constants";
 
 import { router as authRouter } from "./routes/user.route";
+import { router as brandRouter } from "./routes/brand.route";
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 connect(c.MONGODB_URI, {
-  dbName: c.DB_NAME
+  dbName: c.DB_NAME,
 }).then(() => {
   console.log("Connected to MongoDB");
   app.listen(c.PORT, async () => {
@@ -28,3 +29,4 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
+app.use("/brand", brandRouter);

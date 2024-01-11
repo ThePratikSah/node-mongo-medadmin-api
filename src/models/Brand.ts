@@ -1,16 +1,14 @@
 import { Document } from "mongodb";
 import { Schema, model } from "mongoose";
 
-export interface Brand extends Document {
+export interface IBrand extends Document {
   name: string;
   logo?: string;
   website?: string;
   description?: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
-const BrandSchema = new Schema<Brand>(
+const BrandSchema = new Schema<IBrand>(
   {
     name: {
       type: String,
@@ -33,4 +31,8 @@ const BrandSchema = new Schema<Brand>(
   { timestamps: true }
 );
 
-const Brand = model<Brand>("Brand", BrandSchema);
+const Brand = model<IBrand>("Brand", BrandSchema);
+
+export const getBrandById = (id: string) => Brand.findById(id);
+export const getBrandByName = (name: string) => Brand.findOne({ name });
+export const createBrand = (brand: IBrand) => new Brand(brand).save();

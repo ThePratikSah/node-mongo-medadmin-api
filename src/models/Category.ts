@@ -6,8 +6,6 @@ export interface Category extends Document {
   description?: string;
   image?: string;
   parentCategory?: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 const CategorySchema = new Schema<Category>(

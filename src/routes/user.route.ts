@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { loginController, signupController } from "../controllers/auth";
+import { signupController } from "../controllers/auth/signup.controller";
 import { checkAuthData } from "../middleware/auth.middleware";
+import { loginController } from "../controllers/auth/login.controller";
 
 export const router = Router();
 
