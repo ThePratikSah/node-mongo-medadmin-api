@@ -3,13 +3,13 @@ import {
   checkBrandParams,
   checkBrandPayloadData,
 } from "../middleware/brand.middleware";
-import { createBrandController } from "../controllers/brand/create-brand.controller";
 import {
+  createBrandController,
   getAllBrnadsController,
   getBrandByIdController,
-} from "../controllers/brand/get-brand.controller";
-import { deleteBrandController } from "../controllers/brand/delete-brand.controller";
-import { updateBrandController } from "../controllers/brand/update-brand.controller";
+  updateBrandController,
+  deleteBrandController,
+} from "../controllers/brand/brand.controller";
 
 export const router = Router();
 
