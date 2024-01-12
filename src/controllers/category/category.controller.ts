@@ -24,15 +24,15 @@ export async function getAllCategoryController(_req: Request, res: Response) {
 }
 
 export async function getCategoryByIdController(req: Request, res: Response) {
-  const { brandId } = req.params;
-  const brand = await getCategoryById(brandId);
-  return res.status(200).json({ brand });
+  const { categoryId } = req.params;
+  const category = await getCategoryById(categoryId);
+  return res.status(200).json({ category });
 }
 
 export async function updateCategoryController(req: Request, res: Response) {
-  const { brandId } = req.params;
+  const { categoryId } = req.params;
   try {
-    await updateCategory(brandId, req.body);
+    await updateCategory(categoryId, req.body);
     return res.status(200).json({ msg: "Category updated successfully" });
   } catch (error) {
     return res
@@ -42,9 +42,9 @@ export async function updateCategoryController(req: Request, res: Response) {
 }
 
 export async function deleteCategoryController(req: Request, res: Response) {
-  const { brandId } = req.params;
+  const { categoryId } = req.params;
   try {
-    await deleteCategory(brandId);
+    await deleteCategory(categoryId);
     return res.status(200).json({ msg: "Category deleted successfully" });
   } catch (error) {
     return res

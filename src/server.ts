@@ -7,6 +7,7 @@ import { c } from "./constants";
 
 import { router as authRouter } from "./routes/auth.route";
 import { router as brandRouter } from "./routes/brand.route";
+import { router as categoryRouter } from "./routes/category.route";
 
 const app = express();
 
@@ -30,3 +31,4 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRouter);
 app.use("/brand", brandRouter);
+app.use("/category", categoryRouter);

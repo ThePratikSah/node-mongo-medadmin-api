@@ -21,6 +21,7 @@ const CategorySchema = new Schema<Category>(
     },
     image: {
       type: String,
+      required: false,
     },
   },
   { timestamps: true }
