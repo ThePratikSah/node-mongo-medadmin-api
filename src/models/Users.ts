@@ -48,3 +48,6 @@ export const getUserByPhoneNumber = (phoneNumber: string) =>
 export const getUserByEmail = (email: string) => User.findOne({ email });
 export const createUser = (user: IUser): Promise<object> =>
   new User(user).save();
+export const updateUser = (id: string, user: IUser) =>
+  User.findByIdAndUpdate(id, user);
+export const deleteUser = (id: string) => User.findByIdAndDelete(id);
