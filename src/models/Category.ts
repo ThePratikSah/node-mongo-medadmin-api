@@ -1,13 +1,13 @@
 import { Document } from "mongodb";
 import { Schema, model } from "mongoose";
 
-export interface Category extends Document {
+export interface ICategory extends Document {
   name: string;
   description?: string;
   image?: string;
 }
 
-const CategorySchema = new Schema<Category>(
+const CategorySchema = new Schema<ICategory>(
   {
     name: {
       type: String,
@@ -27,12 +27,12 @@ const CategorySchema = new Schema<Category>(
   { timestamps: true }
 );
 
-const Category = model<Category>("Category", CategorySchema);
+const Category = model<ICategory>("Category", CategorySchema);
 
-export const createCategory = (category: Category) =>
+export const createCategory = (category: ICategory) =>
   new Category(category).save();
 export const getAllCategories = () => Category.find();
 export const getCategoryById = (id: string) => Category.findById(id);
 export const deleteCategory = (id: string) => Category.findByIdAndDelete(id);
-export const updateCategory = (id: string, category: Category) =>
+export const updateCategory = (id: string, category: ICategory) =>
   Category.findByIdAndUpdate(id, category);
