@@ -29,6 +29,7 @@ This REST API serves as the backbone for a medicine store ecommerce application,
 - Clone this repository: `git clone https://github.com/ThePratikSah/node-mongo-medadmin-api.git`
 - Install dependencies: `npm install`
 - Create a `.env` file and set environment variables (see .env.example)
+- Seed dummy data using Faker `npm run seed`
 - Start the development server: `npm run dev`
 - Access the API at `http://localhost:3000/`
 
