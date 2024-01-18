@@ -6,8 +6,12 @@ import {
   getBrandById,
   updateBrand,
 } from "../../models/Brand";
+import { ExtendedRequest } from "../../middleware/auth.middleware";
 
-export async function createBrandController(req: Request, res: Response) {
+export async function createBrandController(
+  req: ExtendedRequest,
+  res: Response
+) {
   try {
     await createBrand(req.body);
     return res.status(200).json({ msg: "Brand created successfully" });

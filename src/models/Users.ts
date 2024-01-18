@@ -5,7 +5,7 @@ import { Schema, model } from "mongoose";
 export interface IUser extends Document {
   email: string;
   password: string;
-  isAdmin?: boolean;
+  role?: "user" | "manager" | "admin";
   verified?: boolean;
   phoneNumber?: string;
   name?: string;
@@ -27,9 +27,9 @@ const userSchema = new Schema<IUser>(
       required: true,
       trim: true,
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
+    role: {
+      type: String,
+      default: "user",
     },
     verified: {
       type: Boolean,
