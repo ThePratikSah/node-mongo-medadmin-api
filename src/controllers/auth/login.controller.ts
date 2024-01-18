@@ -26,7 +26,9 @@ export async function loginController(
   }
 
   const token = generateToken({
+    _id: user._id,
     email: user.email,
+    role: user.role || "user",
   });
 
   return res.status(200).json({ token });
