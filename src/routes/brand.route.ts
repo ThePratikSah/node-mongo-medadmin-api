@@ -11,6 +11,7 @@ import {
   deleteBrandController,
 } from "../controllers/brand/brand.controller";
 import { checkAuth, restrictTo } from "../middleware/auth.middleware";
+import { permissions } from "../models/Brand";
 
 export const router = Router();
 
@@ -18,16 +19,28 @@ router.post(
   "/",
   checkBrandPayloadData,
   checkAuth,
-  restrictTo(["admin", "manager"]),
+  restrictTo(permissions.create),
   createBrandController
 );
-router.get("/:brandId", checkBrandParams, getBrandByIdController);
-router.get("/", getAllBrnadsController);
+router.get(
+  "/:brandId",
+  checkBrandParams,
+  restrictTo(permissions.read),
+  getBrandByIdController
+);
+router.get("/", restrictTo(permissions.read), getAllBrnadsController);
 router.put(
   "/:brandId",
   checkBrandParams,
   checkBrandPayloadData,
   checkAuth,
+  restrictTo(permissions.update),
   updateBrandController
 );
-router.delete("/:brandId", checkBrandParams, checkAuth, deleteBrandController);
+router.delete(
+  "/:brandId",
+  checkBrandParams,
+  checkAuth,
+  restrictTo(permissions.delete),
+  deleteBrandController
+);

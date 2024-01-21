@@ -29,6 +29,13 @@ const CategorySchema = new Schema<ICategory>(
 
 const Category = model<ICategory>("Category", CategorySchema);
 
+export const permissions = {
+  create: ["admin", "manager"],
+  read: ["admin", "manager", "user"],
+  update: ["admin", "manager"],
+  delete: ["admin", "manager"],
+};
+
 export const createCategory = (category: ICategory) =>
   new Category(category).save();
 export const getAllCategories = () => Category.find();

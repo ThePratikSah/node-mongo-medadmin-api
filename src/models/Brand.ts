@@ -33,6 +33,13 @@ const BrandSchema = new Schema<IBrand>(
 
 const Brand = model<IBrand>("Brand", BrandSchema);
 
+export const permissions = {
+  create: ["admin", "manager"],
+  read: ["admin", "manager", "user"],
+  update: ["admin", "manager"],
+  delete: ["admin", "manager"],
+};
+
 export const getAllBrands = () => Brand.find();
 export const getBrandById = (id: string) => Brand.findById(id);
 export const getBrandByName = (name: string) => Brand.findOne({ name });
