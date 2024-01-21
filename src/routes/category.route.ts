@@ -11,13 +11,14 @@ import {
   checkCategoryPayloadData,
 } from "../middleware/category.middleware";
 import { restrictTo } from "../middleware/auth.middleware";
+import { permissions } from "../models/Category";
 
 export const router = Router();
 
 router.post(
   "/",
   checkCategoryPayloadData,
-  restrictTo(["admin", "manager"]),
+  restrictTo(permissions.create),
   createCategoryController
 );
 router.get("/", getAllCategoryController);
@@ -26,11 +27,11 @@ router.put(
   "/:categoryId",
   checkCategoryPayloadData,
   checkCategoryParams,
-  restrictTo(["admin", "manager"]),
+  restrictTo(permissions.update),
   updateCategoryController
 );
 router.delete(
   "/:categoryId",
-  restrictTo(["admin", "manager"]),
+  restrictTo(permissions.delete),
   deleteCategoryController
 );
